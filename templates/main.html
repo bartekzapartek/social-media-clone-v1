@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+    </head>
+
+    <style>
+
+        *,
+        *::after,
+        *::before
+        {
+            box-sizing: border-box;
+
+            padding: 0;
+            margin: 0;
+        }
+
+        .main-wrapper
+        {
+
+            display: grid;
+
+        }
+
+    </style>
+
+
+    <body>
+
+        <div class = "main-wrapper">
+
+            <div class = "navbar-wrapper">
+
+                {% include 'navigation-bar.html' %}
+
+            </div>
+
+            <div class="content-wrapper">
+
+                {% block content %}
+
+
+                {% endblock content %}
+
+            </div>
+
+
+        </div>
+
+        
+    </body>
+
+</html>
