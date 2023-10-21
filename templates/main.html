@@ -8,6 +8,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
 
+
+        <!-- Font Roboto -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
     </head>
 
     <style>
@@ -27,8 +33,11 @@
 
             display: grid;
 
+            font-family: 'Roboto', sans-serif;
+
         }
 
+ 
     </style>
 
 
@@ -36,12 +45,10 @@
 
         <div class = "main-wrapper">
 
-            <div class = "navbar-wrapper">
 
-                {% include 'navigation-bar.html' %}
+            {% include 'navigation-bar.html' %}
 
-            </div>
-
+          
             <div class="content-wrapper">
 
                 {% block content %}
