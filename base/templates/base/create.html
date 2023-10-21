@@ -1,0 +1,56 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<style>
+
+    .create-wrapper
+        {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: center;
+            
+            width: 100%;
+            height: 100%;
+
+
+        }
+
+        .create-form
+        {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            margin-top: 5%;
+            width: 40%;
+            height: 60%;
+            padding: 4rem;
+            border-radius: 1.5rem;
+
+
+            background-color: rgb(182, 172, 186);
+        }
+
+</style>
+
+    <div class = "create-wrapper">
+
+
+        <form method = "POST" action = "" class = "create-form">
+
+            {% csrf_token %}
+
+            {{ post_form.as_p }}
+
+            <input type = "submit" value = "Submit">
+
+        </form>
+
+
+    </div>
+
+{% endblock content %}

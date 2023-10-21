@@ -6,25 +6,52 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-       
-        gap: 2rem;
+        justify-content: space-around;
+
+        width: 100%;
+        height: 100%;
+
+        background-color: black;
+        color: white;
+        border-radius:  0 1rem 1rem 0; 
+        font-size: 1.3rem;
 
     }
 
-    .user-info-link
+    .username-item
+    {
+        padding: 1.1rem;
+        font-weight: 700;
+        background-color: rgb(182, 172, 186);
+        border-radius: 1rem;
+        color: white;
+        transition: padding 0.3s, color 0.3s;
+    }
+
+    .username-item:hover
+    {
+        padding: 1.3rem;
+        cursor: pointer;
+        color: black;
+    }
+
+
+    .logout-item
     {
 
         padding: 1rem;
         color: white;
-        text-decoration: none;
-        transition: color 0.3s;
+        border-radius: 1rem;
+
+        transition: padding 0.3s, background-color 0.3s, color 0.3s;
     }
 
-    .user-info-link:hover
+    .logout-item:hover
     {
         cursor: pointer;
-        color: palevioletred;
+        padding: 1.2rem;
+        background-color: white;
+        color: black;
 
     }
 
@@ -36,38 +63,39 @@
 
     {% if request.user.is_authenticated %}
 
-    <div>
- 
-        <a href = "" class = "user-info-link">
 
-            @{{ request.user.username }}
+    <a href = "{% url 'user-profile' request.user.username %}">
+        <div class = "username-item">
+    
+                @{{ request.user.username }}
 
-        </a>
+        </div>
+    </a>
 
-    </div>
 
+    <a href = "{% url 'logout' %}">
 
-    <div>
+        <div class = "logout-item">   
+                
+                Logout
 
-        <a href = "{% url 'logout' %}" class = "user-info-link">
-            
-            Logout
+        </div>
 
-        </a>
-
-    </div>
+    </a>
 
     {% else %}
 
-    <div>
-        
-        <a href = "{% url 'login' %}" class = "user-info-link">
-            Login | Register
-        </a>
 
-    </div>
+    <a href = "{% url 'login' %}">
+        <div class = "logout-item">
+            
+                Login | Register
+
+        </div>
+    </a>
 
     {% endif %}
 
+    {% include 'navigation-bar.html' %}
 
 </div>

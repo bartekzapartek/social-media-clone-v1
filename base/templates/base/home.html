@@ -2,6 +2,135 @@
 
 
 {% block content %}
+    <style>
 
+        .home-wrapper
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            width: 100%;
+            height: 100%;
+        }
+
+        .content-navbar
+        {
+            display: flex;
+
+            justify-content: flex-start;
+            align-items: end;
+
+            gap: 1rem;
+            
+            width: 80%;
+            height: 10%;
+            
+            border-bottom: 0.1rem solid black;
+        }
+
+        .content-navbar-item
+        {
+
+            font-weight: 700;
+            font-size: 0.9rem;
+
+            padding: 0.4rem;
+
+            transition: border-bottom 0.1s;
+        }
+
+        .content-navbar-item:hover
+        {
+
+            border-bottom: 3px solid black;
+
+        }
+
+        .create
+        {
+            margin-left: auto;
+        }
+
+        .for-you-wrapper
+        {
+            display: flex;
+            flex-direction: column;
+
+            width: 80%;
+
+            margin-top: 2rem;
+
+            align-items: flex-start;
+            justify-content: space-evenly;
+            gap: 2rem;
+
+        }
+
+    </style>
+
+
+    <div class = "home-wrapper ">
+
+
+        <div class="content-navbar">
+
+                <div class="content-navbar-item">
+
+                    <a href = "{% url 'home' %}">
+
+                        for you
+
+                    </a>
+                    
+
+                </div>
+
+
+                <div class="content-navbar-item">
+
+                    <a href= "{% url 'explore' %}">
+
+                        explore
+
+                    </a>
+                    
+                    
+                </div>
+
+                
+                <div class="content-navbar-item create">
+
+                    <a href= "{% url 'create' %}">
+
+                        create
+
+                    </a>
+                    
+                    
+                </div>
+
+        </div>
+
+        <div class = "for-you-wrapper">
+
+            {% for post_item in following_posts %}
+
+                <div class="post-item">
+
+                    <p>@{{ post_item.owner.username }}</p>
+
+                    <p>{{ post_item.description }}</p>
+
+
+                </div>
+
+            {% endfor %}
+
+
+        </div>
+
+            
+    </div>
 
 {% endblock content %}
