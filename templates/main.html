@@ -32,11 +32,51 @@
         {
 
             display: grid;
+            grid-template-columns: 1fr 5fr;
+            grid-template-rows: 1fr 3fr 3fr;
 
+
+            height: 90vh;
+      
+            
             font-family: 'Roboto', sans-serif;
 
         }
 
+        .navbar-wrapper
+        {
+
+        
+
+            grid-area: 1 / 2 / 2 / -1;
+            
+
+        }
+        
+        .recent-activity-wrapper
+        {
+
+            grid-area: 3 / 1 / 4 / 2;
+            
+
+        }
+
+        .user-wrapper
+        {
+
+            grid-area: 1 / 1 / 3 / 2;
+            background-color: black;
+            color: white;
+            border-radius:0 1rem 1rem 0; 
+
+        }
+
+        .content-wrapper
+        {
+            grid-area: 2 / 2 / -1 / -1;
+            
+
+        }
  
     </style>
 
@@ -45,18 +85,34 @@
 
         <div class = "main-wrapper">
 
+            <div class="navbar-wrapper">
 
-            {% include 'navigation-bar.html' %}
+                {% include 'navigation-bar.html' %}
+            
+            </div>
+
+            <div class="user-wrapper">
+
+                {% include 'user-info.html' %}
+              
+            </div>
+
+            <div class = "recent-activty-wrapper">
+
+                
+            </div>
 
           
             <div class="content-wrapper">
-
+              
                 {% block content %}
 
 
                 {% endblock content %}
 
             </div>
+
+            
 
 
         </div>

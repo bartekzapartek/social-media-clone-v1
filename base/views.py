@@ -1,7 +1,13 @@
 from django.shortcuts import render
 
+from .models import Post, Comment, UserProfile
+from django.contrib.auth.decorators import login_required
 
+
+
+@login_required(login_url = 'login')
 def home_view(request):
+    #logged_user = UserProfile.objects.get(user = request.user)
 
     context = {}
     return render(request, 'base/home.html', context)

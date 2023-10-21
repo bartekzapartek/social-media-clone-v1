@@ -3,5 +3,74 @@
 
 {% block content %}
 
+    <style>
+
+        .register-form-wrapper
+        {
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            margin: 1rem;
+
+        }
+
+        .register-form
+        {
+
+            padding: 2rem;
+            border-radius: 1.5rem;
+
+            background-color: rgb(182, 172, 186);
+        }
+
+    </style>
+
+    {% if login_page == True %}
+
+    
+    <div class = "register-form-wrapper">
+
+
+
+        <form method = "POST" action = "" class = "register-form">
+            
+            {% csrf_token %}
+
+            <label>Username</label>
+            <input type = "text" placeholder = "Enter the username..." name = "username">
+
+            <label>Password</label>
+            <input type = "password" placeholder = "Enter the password..." name = "password">
+
+            <input type = "submit" value = "Submit">
+
+        </form>
+
+            
+    </div>
+
+
+    {% else %}
+
+        <div class = "register-form-wrapper"> 
+
+
+            <form method = "POST" action = "" class = "register-form">
+
+                {% csrf_token %}
+
+                {{ user_creation_form.as_p }}
+
+                <input type = 'submit' value = 'Submit'>
+
+            </form>
+
+
+        </div>
+
+    {% endif %}
+
 
 {% endblock content %}

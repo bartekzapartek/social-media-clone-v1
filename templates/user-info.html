@@ -1,0 +1,73 @@
+<style>
+
+    .user-info-content
+    {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+       
+        gap: 2rem;
+
+    }
+
+    .user-info-link
+    {
+
+        padding: 1rem;
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .user-info-link:hover
+    {
+        cursor: pointer;
+        color: palevioletred;
+
+    }
+
+
+</style>
+
+
+<div class="user-info-content">
+
+    {% if request.user.is_authenticated %}
+
+    <div>
+ 
+        <a href = "" class = "user-info-link">
+
+            @{{ request.user.username }}
+
+        </a>
+
+    </div>
+
+
+    <div>
+
+        <a href = "{% url 'logout' %}" class = "user-info-link">
+            
+            Logout
+
+        </a>
+
+    </div>
+
+    {% else %}
+
+    <div>
+        
+        <a href = "{% url 'login' %}" class = "user-info-link">
+            Login | Register
+        </a>
+
+    </div>
+
+    {% endif %}
+
+
+</div>
