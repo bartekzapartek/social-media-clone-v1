@@ -9,43 +9,6 @@
     height: 100%;
 }
 
-.content-navbar
-{
-    display: flex;
-
-    justify-content: flex-start;
-    align-items: end;
-
-    gap: 1rem;
-    
-    width: 80%;
-    height: 10%;
-    
-    border-bottom: 0.1rem solid black;
-}
-
-.content-navbar-item
-{
-
-    font-weight: 700;
-    font-size: 0.9rem;
-
-    padding: 0.4rem;
-
-    transition: border-bottom 0.1s;
-}
-
-.content-navbar-item:hover
-{
-
-    border-bottom: 3px solid black;
-
-}
-
-.create
-{
-    margin-left: auto;
-}
 
 .for-you-wrapper
 {

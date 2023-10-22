@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+
+
+{% block static %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'base/post-view.css' %}">
+
+{% endblock static %}
+
+
+{% block content %}
+
+    <div class = 'post-view-content'>
+
+
+        <div class="post-user-info">
+
+            <a href = "{% url 'user-profile' post.owner.username %}" class = "post-user-info-link">
+
+                @{{ post.owner.username }}
+
+            </a>
+
+            <p class = "post-user-info-created">
+
+                {{ post.created | timesince }}
+
+            </p>
+
+        </div>
+
+        <div class="post-cover">
+
+            <img src="{{ post.cover.url }}" alt="" srcset="" class = "post-cover-image">
+
+        </div>
+
+        <div class="post-description">
+
+            {{ post.description }}
+
+        </div>
+
+
+        <div class="post-comment-section">
+
+
+
+        </div>
+
+    </div>
+
+{% endblock content %}

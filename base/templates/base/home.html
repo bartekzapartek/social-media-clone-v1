@@ -5,6 +5,7 @@
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'base/home.css' %}">
+    <link rel="stylesheet" href="{% static 'base/components/base-navbar-component.css' %}">
 
 {% endblock static %}
 
@@ -14,45 +15,7 @@
 
     <div class = "home-wrapper ">
 
-
-        <div class="content-navbar">
-
-                <div class="content-navbar-item">
-
-                    <a href = "{% url 'home' %}">
-
-                        for you
-
-                    </a>
-                    
-
-                </div>
-
-
-                <div class="content-navbar-item">
-
-                    <a href= "{% url 'explore' %}">
-
-                        explore
-
-                    </a>
-                    
-                    
-                </div>
-
-                
-                <div class="content-navbar-item create">
-
-                    <a href= "{% url 'create' %}">
-
-                        create
-
-                    </a>
-                    
-                    
-                </div>
-
-        </div>
+        {% include 'base/components/base-navbar-component.html' %}
 
         <div class = "for-you-wrapper">
 

@@ -1,0 +1,41 @@
+
+.user-profile-wrapper
+{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+
+
+    width: 100%;
+    height: 100%;
+
+    margin-top: 5%;
+
+}
+
+.user-info
+{
+    display: flex;
+    gap: 1rem;
+
+    justify-content: space-around;
+
+}
+
+.user-username
+{   
+    font-weight: 700;
+}
+
+.user-following-link
+{
+    color: gray
+}
+
+.user-followers-link
+{
+
+    color: gray;
+
+}

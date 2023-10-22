@@ -1,9 +1,27 @@
 {% extends 'main.html' %}
 
+{% block static %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'base/explore.css' %}">
+    <link rel="stylesheet" href="{% static 'base/components/base-navbar-component.css' %}">
+    <link rel="stylesheet" href="{% static 'base/components/gallery-component.css' %}">
+
+{% endblock static %}
+
 
 {% block content %}
 
-    
+  
+    <div class="explore-wrapper">
+
+        {% include 'base/components/base-navbar-component.html' %}
+
+
+        {% include 'base/components/gallery-component.html' %}
+       
+
+    </div>
 
 
 {% endblock content %}

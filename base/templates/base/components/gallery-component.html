@@ -1,0 +1,10 @@
+<div class="covers-gallery">    
+        
+    {% for post in posts %}
+
+        <a href = "{% url 'post' post.id %}" class = "image-link-explore">
+            <img src="{{ post.cover.url }}" alt="" class = "img-explore">
+        </a>
+    {% endfor %}
+
+</div>

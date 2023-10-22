@@ -13,11 +13,11 @@
     <div class = "create-wrapper">
 
 
-        <form method = "POST" action = "" class = "create-form">
+        <form method = "POST" enctype="multipart/form-data" action = "" class = "create-form">
 
             {% csrf_token %}
 
-            {{ post_form.as_p }}
+            {{ post_form }}
 
             <input type = "submit" value = "Submit">
 

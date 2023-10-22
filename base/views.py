@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 
+from django.contrib.auth.models import User
 from .models import Post, Comment, UserProfile
 from .forms import PostForm
 
@@ -23,22 +24,40 @@ def home_view(request):
 
 
 def explore_view(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-created')
 
 
-    context = {}
-    return render(request, 'base/home.html', context)
+    context = {'posts' : posts}
+    return render(request, 'base/explore.html', context)
 
 def post_view(request, pk):
+    post = Post.objects.get(id = pk)
+    likes_count = post.likes.count()
+
     
-    context = {}
-    return render(request, 'base/post.html', context)
+    context = {'post' : post, 'likes_count' : likes_count}
+    return render(request, 'base/post-view.html', context)
 
-
+@login_required(login_url = 'login')
 def user_profile_view(request, username):
+    user = User.objects.get(username = username)
+    user_profile = UserProfile.objects.get(user = user)
 
-    context = {}
-    return render(request, 'base/home.html', context)
+    following_count = user_profile.following.count()
+    followers_count = user_profile.followers.count()
+
+    posts = Post.objects.filter(owner = user)
+
+    context = {
+
+        'username' : username,
+        'following_count' : following_count,
+        'followers_count' : followers_count,
+        'posts' : posts
+
+    }
+
+    return render(request, 'base/user-profile.html', context)
 
 
 @login_required(login_url = 'login')
@@ -46,8 +65,8 @@ def create_view(request):
     post_form = PostForm()
 
     if request.method == 'POST':
-        post_form = PostForm(request.POST)
-
+        post_form = PostForm(request.POST, request.FILES)
+       
         if post_form.is_valid():
             post = post_form.save(commit = False)
             

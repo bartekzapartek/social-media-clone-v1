@@ -1,0 +1,47 @@
+.covers-gallery
+{
+
+    display: flex;
+   
+
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    margin-top: 5%;
+
+    gap: 5%;
+
+    width: 50%;
+    height: 100%;
+  
+
+}
+
+.image-link-explore
+{
+
+    min-width: 8rem;
+
+    width: 25%;
+    height: 35%;
+
+}
+
+.img-explore
+{
+    border-radius: 1rem;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    transition: transform 0.3s;
+}
+
+.img-explore:hover
+{
+    cursor: pointer;
+    transform: scale(115%);
+
+}

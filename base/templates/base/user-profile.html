@@ -1,9 +1,59 @@
 {% extends 'main.html' %}
 
+{% block static %}
+
+    {% load static %}
+    <link rel="stylesheet" href = "{% static 'base/user-profile.css' %}">
+    <link rel="stylesheet" href = "{% static 'base/components/gallery-component.css' %}">
+
+{% endblock static %}
+
 
 {% block content %}
 
 
+    <div class="user-profile-wrapper">
+
+        <div class="user-cover-photo">
+
+
+        </div>
+
+        <div class="user-info">
+
+            <div class="user-username">
+                
+                @{{ username }}
+
+            </div>
+
+            <div class="user-following">
+
+                <a href="" class = "user-following-link">
+
+                    {{ following_count }} following
+
+                </a>
+
+            </div>
+
+            <div class="user-followers">
+
+                <a href = "" class = "user-followers-link">
+
+                    {{ followers_count }} followers
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        {% include 'base/components/gallery-component.html' %}
+
+
+    </div>
 
 
 {% endblock content %}
