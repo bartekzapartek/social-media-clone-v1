@@ -1,143 +1,25 @@
 {% extends 'main.html' %}
 
 
+{% block static %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'authen/authenticate.css' %}">
+
+{% endblock static %}
+
 {% block content %}
 
-    <style>
-
-        .register-form-wrapper
-        {
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            align-content: center;
-            
-            width: 100%;
-            height: 100%;
-
-
-        }
-
-        .register-form
-        {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-
-            margin-top: 5%;
-            width: 40%;
-            height: 60%;
-            padding: 4rem;
-            border-radius: 1.5rem;
-
-
-            background-color: rgb(182, 172, 186);
-        }
-
-        .switch-login-register
-        {
-            background-color: black;
-            border-radius: 1.5rem;
-            color: white;
-            width: 40%;
-            height: 20%;
-            font-size: 1.3rem;
-            padding: 4rem;
-        }
-
-        .here-link
-        {
-            font-size: 1.3rem;
-            color: rgb(182, 172, 186);
-            transition: color 0.3s, background-color 0.3s, padding 0.3s, border-radius 0.3s;
-           
-        }  
-        
-        .here-link:hover
-        {
-            color: black;
-            background-color: white;
-            padding: 0.5rem;
-            border-radius: 1rem;
-
-        }
-        
-
-    </style>
 
     {% if login_page == True %}
 
     
-    <div class = "register-form-wrapper">
-
-
-
-        <form method = "POST" action = "" class = "register-form">
-            
-            {% csrf_token %}
-
-            <label>Username</label>
-            <input type = "text" placeholder = "Enter the username..." name = "username">
-
-            <label>Password</label>
-            <input type = "password" placeholder = "Enter the password..." name = "password">
-
-            <input type = "submit" value = "Submit">
-
-        </form>
-
-        
-
-            <div class = "switch-login-register">
-
-                Don't have an account? Register
-                <a href= "{% url 'register' %}" class = "here-link">
-
-                    here
-                
-                </a>
-
-            </div>
-
-      
-
-      
-            
-    </div>
+        {% include 'authen/components/login-component.html' %}
 
 
     {% else %}
 
-        <div class = "register-form-wrapper"> 
-
-
-            <form method = "POST" action = "" class = "register-form">
-
-                {% csrf_token %}
-
-                {{ user_creation_form.as_p }}
-
-                <input type = 'submit' value = 'Submit'>
-
-            </form>
-
-        
-
-                <div class = "switch-login-register">
-    
-                    Already have an account? Login
-                    <a href= "{% url 'login' %}" class = "here-link">
-
-                        here
-
-                    </a>
-                </div>
-    
-            </a>
-
-
-        </div>
+        {% include 'authen/components/register-component.html' %}
 
     {% endif %}
 

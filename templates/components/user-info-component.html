@@ -1,0 +1,39 @@
+
+<div class="user-info-content">
+
+    {% if request.user.is_authenticated %}
+
+
+    <a href = "{% url 'user-profile' request.user.username %}">
+        <div class = "username-item">
+    
+                @{{ request.user.username }}
+
+        </div>
+    </a>
+
+
+    <a href = "{% url 'logout' %}">
+
+        <div class = "logout-item">   
+                
+                Logout
+
+        </div>
+
+    </a>
+
+    {% else %}
+
+
+    <a href = "{% url 'login' %}">
+        <div class = "logout-item">
+            
+                Login &#183; Register
+
+        </div>
+    </a>
+
+    {% endif %}
+
+</div>

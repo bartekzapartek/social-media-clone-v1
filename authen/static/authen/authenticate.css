@@ -1,0 +1,58 @@
+
+.register-form-wrapper
+{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    
+    width: 100%;
+    height: 100%;
+
+
+}
+
+.register-form
+{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    margin-top: 5%;
+    width: 40%;
+    height: 60%;
+    padding: 4rem;
+    border-radius: 1.5rem;
+
+
+    background-color: rgb(182, 172, 186);
+}
+
+.switch-login-register
+{
+    background-color: black;
+    border-radius: 1.5rem;
+    color: white;
+    width: 40%;
+    height: 20%;
+    font-size: 1.3rem;
+    padding: 4rem;
+}
+
+.here-link
+{
+    font-size: 1.3rem;
+    color: rgb(182, 172, 186);
+    transition: color 0.3s, background-color 0.3s, padding 0.3s, border-radius 0.3s;
+    
+}  
+
+.here-link:hover
+{
+    color: black;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 1rem;
+
+}

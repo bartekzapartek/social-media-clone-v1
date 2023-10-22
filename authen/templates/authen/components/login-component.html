@@ -1,0 +1,32 @@
+<div class = "register-form-wrapper">
+
+
+
+    <form method = "POST" action = "" class = "register-form">
+        
+        {% csrf_token %}
+
+        <label>Username</label>
+        <input type = "text" placeholder = "Enter the username..." name = "username">
+
+        <label>Password</label>
+        <input type = "password" placeholder = "Enter the password..." name = "password">
+
+        <input type = "submit" value = "Submit">
+
+    </form>
+
+    
+
+        <div class = "switch-login-register">
+
+            Don't have an account? Register
+            <a href= "{% url 'register' %}" class = "here-link">
+
+                here
+            
+            </a>
+
+        </div>
+    
+</div>

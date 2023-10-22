@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 
@@ -14,78 +15,24 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
+        <!-- Include static files -->
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'components/preconfig.css' %}">
+        
+        <link rel="stylesheet" href="{% static 'main.css' %}">
+        <link rel="stylesheet" href="{% static 'navbar.css' %}">
+
+        <link rel="stylesheet" href="{% static 'components/navbar-component.css' %}">
+        <link rel="stylesheet" href="{% static 'components/user-info-component.css' %}">
+
+        {% block static %}
+
+
+        {% endblock static %}
+
     </head>
 
-    <style>
-
-        *,
-        *::after,
-        *::before
-        {
-            box-sizing: border-box;
-
-            padding: 0;
-            margin: 0;
-        }
-
-        a,
-        input,
-        label
-        {
-            text-decoration: none;
-            color: black;
-            border: none;
-        }
-
-        .main-wrapper
-        {
-
-            display: grid;
-            grid-template-columns: 1fr 5fr;
-            grid-template-rows: 1fr 3fr 3fr;
-
-
-            height: 100vh;
-      
-            
-            font-family: 'Roboto', sans-serif;
-
-        }
-
-        .navbar-wrapper
-        {
-
-        
-
-            grid-area: 1 / 2 / 2 / -1;
-            
-
-        }
-        
-        .recent-activty-wrapper
-        {
-
-            grid-area: 3 / 1 / 4 / 2;
-            background-color: rgb(182, 172, 186);
-            border-radius:0 1rem 1rem 0; 
-            
-
-        }
-
-        .user-wrapper
-        {
-
-            grid-area: 1 / 1 / 3 / 2;
-        
-        }
-
-        .content-wrapper
-        {
-            grid-area: 1 / 2 / -1 / -1;
-
-        }
- 
-    </style>
 
 
     <body>
@@ -93,9 +40,9 @@
         <div class = "main-wrapper">
 
 
-            <div class="user-wrapper">
+            <div class="navbar-wrapper">
 
-                {% include 'user-info.html' %}
+                {% include 'navbar.html' %}
               
             </div>
 

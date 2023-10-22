@@ -1,0 +1,29 @@
+<div class = "register-form-wrapper"> 
+
+
+    <form method = "POST" action = "" class = "register-form">
+
+        {% csrf_token %}
+
+        {{ user_creation_form.as_p }}
+
+        <input type = 'submit' value = 'Submit'>
+
+    </form>
+
+
+
+        <div class = "switch-login-register">
+
+            Already have an account? Login
+            <a href= "{% url 'login' %}" class = "here-link">
+
+                here
+
+            </a>
+        </div>
+
+    </a>
+
+
+</div>

@@ -1,0 +1,46 @@
+
+
+<div class = "navbar-content">
+
+
+    {% if request.user.is_authenticated %}
+
+    <a href="">
+
+        <div class = "navbar-item">
+
+                Search
+
+        </div>
+
+    </a>
+
+    <a href="">
+
+        <div class = "navbar-item">
+
+                Messages
+
+        </div>
+
+    </a>
+
+    {% else %}
+
+    <a href="{% url 'explore' %}">
+
+        <div class = "navbar-item">
+
+                Explore
+
+        </div>
+
+    </a>
+    
+
+    {% endif %}
+    
+
+
+    
+</div>

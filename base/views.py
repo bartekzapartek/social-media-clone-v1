@@ -23,6 +23,8 @@ def home_view(request):
 
 
 def explore_view(request):
+    posts = Post.objects.all()
+
 
     context = {}
     return render(request, 'base/home.html', context)
