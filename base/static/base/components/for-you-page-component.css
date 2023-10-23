@@ -1,0 +1,42 @@
+
+
+.fyp-post-info
+{
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+
+}
+
+.fyp-username-link
+{
+
+    font-weight: 700;
+
+}
+
+.fyp-post-date
+{
+
+    color: gray;
+
+}
+
+
+.fyp-post-cover
+{
+
+    width: 50%;
+    height: 100%;
+
+}
+
+.fyp-post-cover-image
+{
+
+    width: 100%;
+    height: 60%;
+
+}

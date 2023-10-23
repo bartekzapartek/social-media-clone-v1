@@ -6,6 +6,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'base/home.css' %}">
     <link rel="stylesheet" href="{% static 'base/components/base-navbar-component.css' %}">
+    <link rel="stylesheet" href="{% static 'base/components/for-you-page-component.css' %}">
 
 {% endblock static %}
 
@@ -17,25 +18,20 @@
 
         {% include 'base/components/base-navbar-component.html' %}
 
-        <div class = "for-you-wrapper">
 
-            {% for post_item in following_posts %}
+        
+            
+            {% for post in following_posts %}
 
-                <div class="post-item">
-
-                    <p>@{{ post_item.owner.username }}</p>
-
-                    <p>{{ post_item.description }}</p>
-
-
-                </div>
+            <div class="for-you-page-content">
+                {% include 'base/components/for-you-page-component.html' %}
+            </div>
 
             {% endfor %}
-
-
-        </div>
-
-            
+        
+        
+      
+        
     </div>
 
 {% endblock content %}

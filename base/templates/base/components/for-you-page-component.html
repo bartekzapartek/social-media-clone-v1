@@ -1,0 +1,41 @@
+
+
+<div class="fyp-post-info">
+
+    <a href="{% url 'user-profile' post.owner.username %}" class = "fyp-username-link">
+
+            @{{ post.owner.username }}
+
+    </a>
+
+    <p class = "fyp-post-date" >
+
+        {{ post.created | timesince }}
+
+    </p>
+    
+
+</div>
+
+<div class="fyp-post-cover">
+
+    <img src="{{ post.cover.url }}" alt="" srcset="" class = "fyp-post-cover-image">
+
+</div>
+
+<div class="fyp-post-description">
+
+    
+
+</div>
+
+
+<div class="fyp-post-comments">
+
+    {% for comment in comments %}
+
+
+    {% endfor %}
+
+</div>
+
