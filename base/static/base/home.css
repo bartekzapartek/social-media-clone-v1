@@ -11,17 +11,3 @@
 
 
 
-.for-you-page-content
-{
-
-    display: flex;
-    flex-direction: column;
-
-    justify-content: space-evenly;
-    align-items: center;
-
-    width: 50%;
-    height: 100%;
-
-}
-

@@ -1,41 +1,43 @@
 
+<div class="for-you-page-content">
 
-<div class="fyp-post-info">
+    <div class="fyp-post-info">
 
-    <a href="{% url 'user-profile' post.owner.username %}" class = "fyp-username-link">
+        <a href="{% url 'user-profile' post.owner.username %}" class = "fyp-username-link">
 
-            @{{ post.owner.username }}
+                @{{ post.owner.username }}
 
-    </a>
+        </a>
 
-    <p class = "fyp-post-date" >
+        <p class = "fyp-post-date" >
 
-        {{ post.created | timesince }}
+            {{ post.created | timesince }}
 
-    </p>
-    
+        </p>
+        
+
+    </div>
+
+    <div class="fyp-post-cover">
+
+        <img src="{{ post.cover.url }}" alt="" srcset="" class = "fyp-post-cover-image">
+
+    </div>
+
+    <div class="fyp-post-description">
+
+        {{ post.description }}
+
+    </div>
+
+
+    <div class="fyp-post-comments">
+
+        {% for comment in comments %}
+
+
+        {% endfor %}
+
+    </div>
 
 </div>
-
-<div class="fyp-post-cover">
-
-    <img src="{{ post.cover.url }}" alt="" srcset="" class = "fyp-post-cover-image">
-
-</div>
-
-<div class="fyp-post-description">
-
-    
-
-</div>
-
-
-<div class="fyp-post-comments">
-
-    {% for comment in comments %}
-
-
-    {% endfor %}
-
-</div>
-
