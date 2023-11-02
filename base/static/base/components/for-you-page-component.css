@@ -5,11 +5,14 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
- 
+    justify-content: space-around;
     align-items: center;
 
+
+    height: 36rem;
     width: 80%;
+
+    margin: 3%;
 
 }
 
@@ -19,13 +22,17 @@
 
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+  
+    height: 3rem;
+    width: 40%;
 
-    justify-content: space-evenly;
 
 }
 
 .fyp-username-link
 {
+
 
     font-weight: 700;
 
@@ -34,6 +41,7 @@
 .fyp-post-date
 {
 
+
     color: gray;
 
 }
@@ -41,28 +49,42 @@
 
 .fyp-post-cover
 {   
-    width: 100%;
-    height: 70rem;
+    width: 40%;
+
 
     display: flex;
-    justify-content: center ;
+    justify-content: center;
    
    
 }
 
 .fyp-post-cover-image
 {
+    width: 100%;
+    height: 30rem;
 
-    width: 40%;
-    height: 50%;
+    overflow: hidden;
     
     border-radius: 1rem;
-    transition: border 0.1s;
+    transition: opacity 0.3s, scale 0.3s;
+ 
 }
 
 .fyp-post-cover-image:hover
 {
+    scale: 101%;
+    opacity: 98%;
+}
 
-    border: 2px solid black;
- 
+.fyp-post-description
+{   
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+   
+    
+    width: 40%;
+    height: 3rem;
+
 }
