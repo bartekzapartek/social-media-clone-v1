@@ -29,19 +29,54 @@
     background-color: rgb(182, 172, 186);
 }
 
+.register-form > input
+{
+
+    font-size: 1.2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+
+    transition: color 0.3s, background-color 0.3s, padding 0.3s, font-weight 0.5s;
+}
+
+.register-form > input:hover
+{   
+    padding: 1.2rem;
+    cursor: pointer;
+
+}
+
+.register-form > input:focus
+{
+    color: white;
+    background-color: black;
+    border: 1px black solid;
+
+    font-weight: 700;
+
+}
+
 .switch-login-register
 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
     background-color: black;
     border-radius: 1.5rem;
     color: white;
     width: 40%;
-    height: 20%;
+    height: 25%;
     font-size: 1.3rem;
     padding: 4rem;
 }
 
 .here-link
 {
+  
+   
+    margin-left: 0.3rem;
     font-size: 1.3rem;
     color: rgb(182, 172, 186);
     transition: color 0.3s, background-color 0.3s, padding 0.3s, border-radius 0.3s;

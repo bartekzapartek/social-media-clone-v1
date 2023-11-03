@@ -10,6 +10,8 @@ class UserProfile(models.Model):
     followers = models.ManyToManyField(User, blank = True, null = True, related_name = 'user_profile_followers')
 
 
+
+
 def rename(instance, filename):
     ext = filename.split('.')[-1]
 

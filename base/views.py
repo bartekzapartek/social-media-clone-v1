@@ -33,9 +33,27 @@ def explore_view(request):
 def post_view(request, pk):
     post = Post.objects.get(id = pk)
     likes_count = post.likes.count()
+    comments = post.comment_set.all().order_by('-created')
+
+    if request.method == "POST" and request.user.is_authenticated:
+        comment_body = request.POST.get('comment')
+        comment_owner = request.user
+        comment_post = post
+
+        comment = Comment.objects.create(
+
+            owner = comment_owner,
+            body = comment_body,
+            post = comment_post
+
+        )
+
+        comment.save()
+
+        return redirect('post', pk)
 
     
-    context = {'post' : post, 'likes_count' : likes_count}
+    context = {'post' : post, 'likes_count' : likes_count, 'comments' : comments}   
     return render(request, 'base/post-view.html', context)
 
 @login_required(login_url = 'login')

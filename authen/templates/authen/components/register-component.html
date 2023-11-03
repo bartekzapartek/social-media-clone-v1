@@ -5,7 +5,9 @@
 
         {% csrf_token %}
 
-        {{ user_creation_form.as_p }}
+        {{ user_creation_form.username }}
+        {{ user_creation_form.password1 }}
+        {{ user_creation_form.password2 }}
 
         <input type = 'submit' value = 'Submit'>
 
