@@ -18,11 +18,11 @@
 
     </div>
 
-    <div class="fyp-post-cover">
+    <a href = "{% url 'post' post.id %}" class="fyp-post-cover">
 
         <img src="{{ post.cover.url }}" alt="" srcset="" class = "fyp-post-cover-image">
 
-    </div>
+    </a>
 
     <div class="fyp-post-description">
 

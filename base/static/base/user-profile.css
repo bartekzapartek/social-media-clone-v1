@@ -20,6 +20,7 @@
     gap: 1rem;
 
     justify-content: space-around;
+    align-items: baseline;
 
 }
 
@@ -38,4 +39,24 @@
 
     color: gray;
 
+}
+
+.user-info > form > input
+{
+    padding: 0.8rem;
+    font-size: 1rem;
+    color: white;
+    background-color: black;
+    border-radius: 1rem;
+
+    transition: background-color 0.5s, border 0.5s, color 0.5s;
+}
+
+.user-info > form > input:hover
+{
+    background-color: white;
+    border: 1px black solid;
+    color: black;
+
+    cursor: pointer;
 }

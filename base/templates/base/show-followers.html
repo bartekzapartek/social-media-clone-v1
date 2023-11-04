@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+
+{% block static %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'base/show-followers.css' %}">
+
+{% endblock static %}
+
+
+{% block content %}
+
+    <div class="followers">
+        
+        {% for user in users %}
+    
+           
+            <a href="{% url 'user-profile' user.username %}" class = "follower-username">
+
+                    @{{ user.username }}
+
+            </a>
+
+        
+        {% endfor %}
+
+    </div>
+{% endblock content %}

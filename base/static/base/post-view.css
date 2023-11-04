@@ -13,6 +13,26 @@
   
 }
 
+.post-delete
+{
+
+    color: gray;
+
+    border-radius: 1rem;
+    transition: color 0.3s;
+
+}
+
+.post-delete:hover
+{
+    
+    color: black;
+    font-weight: 700;
+    
+}
+
+
+
 .post-user-info
 {
 

@@ -27,9 +27,30 @@
 
             </div>
 
+            {% if follow_status == 'follow' %}
+
+                <form action="" method="post" class = "follow-status">
+                    {% csrf_token %}
+                    
+                    <input type = 'submit' name = 'follow' value = 'follow'>
+
+                </form>
+
+            {% elif follow_status == 'unfollow' %}
+
+                <form action="" method="post" class = "follow-status">
+
+                    {% csrf_token %}
+
+                    <input type = 'submit' name = 'follow' value = 'unfollow'>
+
+                </form>
+            
+            {% endif %}
+
             <div class="user-following">
 
-                <a href="" class = "user-following-link">
+                <a href="{% url 'following' username %}" class = "user-following-link">
 
                     {{ following_count }} following
 
@@ -39,7 +60,7 @@
 
             <div class="user-followers">
 
-                <a href = "" class = "user-followers-link">
+                <a href = "{% url 'followers' username %}" class = "user-followers-link">
 
                     {{ followers_count }} followers
 

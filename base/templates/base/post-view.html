@@ -30,6 +30,16 @@
 
             </p>
 
+            {% if request.user == post.owner %}
+
+                <a href="{% url 'delete-post' post.id %}" class = "post-delete"> 
+
+                    Delete
+
+                </a>
+
+            {% endif %}
+
         </div>
 
         <div class="post-cover">

@@ -28,3 +28,55 @@
 
     background-color: rgb(182, 172, 186);
 }
+
+.create-submit
+{
+    border-radius: 1rem;
+    padding: 1rem;
+    background-color: white;
+    color: black;
+    font-weight: 700;
+    font-size: 1rem;
+
+    transition: padding 0.3s, color 0.3s, background-color 0.5s;
+}
+
+.create-submit:hover
+{
+    padding: 1.2rem;
+    background-color: black;
+    color: white;
+
+    cursor: pointer;
+}
+
+.create-cover
+{
+    font-size: 1rem;
+    height: 25%;
+}
+
+
+
+.create-wrapper > form > #file-upload-button
+{
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.create-wrapper > form > textarea
+{
+    border-radius: 1rem;
+    padding: 1rem;
+
+    font-size: 1rem;
+
+}
+
+.create-wrapper > form > button
+{
+    border-radius: 1rem;
+    padding: 1rem;
+
+    font-size: 1rem;
+}

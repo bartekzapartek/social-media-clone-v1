@@ -1,0 +1,72 @@
+.confirm-deletion-section
+{
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100%;
+    height: 80%;
+
+}
+
+.confirm-deletion-section > p
+{
+
+    font-size: 1.5rem;
+    font-weight: 700;
+
+}
+
+.confirm-deletion-section > a
+{
+    padding: 1.5rem;
+    border-radius: 1rem;
+
+    font-size: 1.5rem;
+
+    background-color: black;
+
+    color: white;
+
+    transition: border 0.3s, background-color 0.3s, color 0.3s, padding 0.3s;
+}
+
+.confirm-deletion-section > a:hover
+{
+
+    border: 1px black solid;
+    background-color: white;
+    color: black;
+    padding: 1.8rem;
+
+    cursor: pointer;
+
+}
+
+.confirm-deletion-section > form > input
+{
+
+    padding: 1.5rem;
+    background-color: black;
+    color: white;
+    border-radius: 1rem;;
+
+    font-size: 1.5rem;
+
+    transition: border 0.3s, background-color 0.3s, color 0.3s, padding 0.3s;
+    
+}
+
+.confirm-deletion-section > form > input:hover
+{
+
+    border: 1px black solid;
+    background-color: white;
+    color: black;
+    padding: 1.8rem;
+    cursor: pointer;
+
+}
