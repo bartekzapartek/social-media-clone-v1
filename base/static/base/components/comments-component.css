@@ -1,0 +1,44 @@
+.post-comment-section
+{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+    align-items: center;
+
+    width: 50%;
+
+}
+
+.post-comment
+{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+    align-items: flex-start;
+
+    width: 100%;
+    
+    padding: 0.5rem;
+
+    border-bottom: 1px solid black;
+
+}
+
+.post-comment-owner
+{
+    font-weight: 700;
+}
+
+.post-comment-date
+{
+
+    color: grey;
+
+}
+
+.post-comment-content
+{
+    padding-block: 0.5rem;
+}

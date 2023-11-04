@@ -1,0 +1,32 @@
+<div class="post-comment-section">
+    
+    
+    {% for comment in comments %}
+
+        <div class="post-comment">
+
+            <div class="post-comment-owner">
+
+                @{{ comment.owner.username }}
+
+            </div>
+
+            <div class="post-comment-date">
+
+                {{ comment.created | timesince }}
+
+            </div>
+
+
+            <div class="post-comment-content">
+
+
+                {{ comment.body }}
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+</div>

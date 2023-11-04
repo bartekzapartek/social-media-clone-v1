@@ -30,14 +30,47 @@
 
     </div>
 
+    <div class="fyp-comments">
 
-    <!-- <div class="fyp-post-comments">
+        {% with my_var=post.comment_set.all|slice:":2" %}
+       
+        {% for comment in my_var %}
 
-        {% for comment in comments %}
+            <div class = "fyp-comment">
+                
+                <div class="comment-username-and-date">
+                    
+                    <div class="comment-username">
 
+                        {{ comment.owner.username }}
+
+                    </div>
+
+                    <div class="comment-date">
+
+                        {{ comment.created | timesince }}
+
+                    </div>
+
+                </div>
+
+                <div class="comment-content">
+                    
+                    {{ comment.body | slice:":50" }}
+
+                </div>
+
+            </div>
 
         {% endfor %}
 
-    </div> -->
 
+        {% endwith %}
+
+
+    </div>
+
+
+    
+ 
 </div>

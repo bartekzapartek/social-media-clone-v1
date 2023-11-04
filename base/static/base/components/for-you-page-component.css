@@ -9,7 +9,7 @@
     align-items: center;
 
 
-    height: 36rem;
+    height: 50rem;
     width: 80%;
 
     margin: 3%;
@@ -87,4 +87,67 @@
     width: 40%;
     height: 3rem;
 
+    padding-bottom: 0.5rem;
+
+    border-bottom: 1px solid black;
+
+}
+
+
+.fyp-comments
+{
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+
+    margin-top: 0.5rem;
+
+    width: 50%;
+    height: 8rem;
+ 
+
+}
+
+.fyp-comment
+{
+
+    display: flex;
+    flex-direction: column;
+
+    height: 3rem;
+    margin-block: 0.5rem;
+
+
+}
+
+.comment-username-and-date
+{
+
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+
+
+}
+
+
+.comment-username
+{
+    font-weight: 700;
+}
+
+.comment-date
+{
+
+    color: gray;
+
+}
+
+.comment-content
+{
+    width: 100%;
 }

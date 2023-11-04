@@ -13,13 +13,14 @@ def home_view(request):
     logged_user = UserProfile.objects.get(user = request.user)
     following_users = logged_user.following.all()
     following_posts = []
+    post_comments = []
 
     for user in following_users:
         following_posts += Post.objects.filter(owner = user) 
+        post_comments += following_posts[-1].comment_set.all()[:2]
 
-    print(following_posts)
     
-    context = {'following_posts' : following_posts} 
+    context = {'following_posts' : following_posts, 'comments' : post_comments} 
     return render(request, 'base/home.html', context)
 
 
