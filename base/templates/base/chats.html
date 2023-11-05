@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+
+
+{% block static %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'base/chats.css' %}">
+
+{% endblock static %}
+
+
+{% block content %}
+
+    <div class="chats-section">
+
+
+        {% for chat in chats %}
+
+            <div class="chat">
+
+                <a href="{% url 'chat-content' chat.id %}" class = "username">
+
+                    {% if chat.participant_1 != request.user %}
+
+                        @{{ chat.participant_1.username }}
+
+                    {% else %}
+
+                        @{{ chat.participant_2.username }}
+
+                    {% endif %}
+
+                </a>
+
+                <a href="{% url 'chat-content' chat.id %}" class="recent-message">
+                    
+                    <span>{{ chat.recent_message_owner }}:</span>&nbsp;{{ chat.recent_message | slice:":25" }}
+
+                </a>
+
+            </div>
+
+        {% endfor %}
+
+
+    </div>
+
+{% endblock content %}

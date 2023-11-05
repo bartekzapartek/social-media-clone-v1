@@ -1,0 +1,67 @@
+{% extends 'main.html' %}
+
+
+{% block static %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'base/search.css' %}">
+    <link rel="stylesheet" href="{% static 'base/components/for-you-page-component.css' %}">
+
+{% endblock static %}
+
+
+{% block content %}
+
+    <div class="search-section">
+
+    
+        <p class = "search-howto"> 
+
+            Use <span>@</span> to search for users. Use <span>#</span> to search for posts.
+
+        </p>
+
+        <form action="{% url 'search' %}" method="get">
+
+            <input type = 'text' name = 'q' placeholder="search...">
+
+        </form>
+        
+
+        <div class="search-results">
+
+            {% if result_type == 'users' %}
+
+                {% for user in search_result %}
+
+
+                    <a href = "{% url 'user-profile' user.username %}" class="user-result">
+
+                        {{ user.username }}
+
+                    </a>
+
+
+                {% endfor %}
+
+            {% elif result_type == 'posts' %}
+                    
+                    <div class="post-result">
+
+                        {% for post in search_result %}
+
+            
+                            {% include 'base/components/for-you-page-component.html' %}
+                 
+        
+                        {% endfor %}
+
+                    </div>
+
+
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock content %}

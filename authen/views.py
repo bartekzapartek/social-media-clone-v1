@@ -20,6 +20,9 @@ def login_view(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
+        if len(username) > 20:
+            return redirect('login')
+
         user = authenticate(request, username = username, password = password)
 
         if user is not None:

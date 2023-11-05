@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+
+
+{% block static %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'base/chat.css' %}">
+    <link rel="stylesheet" href="{% static 'base/components/comments-component.css' %}">
+
+{% endblock static %}
+
+
+{% block content %}
+
+    <div class="chat-content-section">
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type = 'text' placeholder = "enter message..." name = "message">
+
+        </form>
+
+        
+        {% include 'base/components/comments-component.html' with comments=messages %}
+
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+
+{% block static %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'create-chat.css' %}">
+
+{% endblock static %}
+
+
+{% block content %}
+
+    <div class="create-chat-section">
+
+        <div class="create-by-username">
+
+            <form action="" method="post">
+
+                {% csrf_token %}
+                <input type = 'text' placeholder = "enter the username..." name = 'username'>
+
+            </form>
+
+        </div>
+
+        <div class="create-by-following">
+
+            {% for user in following %}
+
+                <form action="" method="post">
+
+                    {% csrf_token %}
+                    <input type = 'submit' value = '{{ user.username }}' name = 'username'>
+
+                </form>
+
+            {% endfor %}
+
+        </div>
+
+
+    </div>
+
+{% endblock content %}

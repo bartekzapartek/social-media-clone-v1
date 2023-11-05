@@ -9,6 +9,7 @@ from . import views
 urlpatterns = [
 
     path('', views.home_view, name = 'home'),
+    path('search/', views.search_view, name = 'search'),
 
     path('user-profile/<str:username>/', views.user_profile_view, name = 'user-profile'),
     path('followers/<str:username>/', views.followers_view, name = "followers"),
@@ -19,6 +20,10 @@ urlpatterns = [
 
     path('create/', views.create_view, name = 'create'),
     path('delete-post/<str:pk>/', views.delete_post_view, name = 'delete-post'),
+
+    path('chat/<str:pk>/', views.show_chat_content, name = 'chat-content'),
+    path('create-chat/', views.create_chat_room_view, name = 'create-chat'),
+    path('show-chats/', views.show_chats_view, name = 'show-chats')
 
 
 ]
