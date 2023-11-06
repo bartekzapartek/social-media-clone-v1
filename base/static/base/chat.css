@@ -26,4 +26,17 @@
 
     font-size: 1.2rem;
 
+    transition: background-color 0.5s, color 0.5s, padding 0.5s;
+
+}
+
+
+.chat-content-section > form > input:hover
+{
+
+    padding: 2.2rem;
+
+    background-color: black;
+    color: white;
+    
 }

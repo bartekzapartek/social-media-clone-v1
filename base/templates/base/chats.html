@@ -13,6 +13,10 @@
 
     <div class="chats-section">
 
+        <a href = "{% url 'create-chat' %}" class = "create-chat">
+            New message
+        </a>
+
 
         {% for chat in chats %}
 

@@ -206,6 +206,7 @@ def create_chat_room_view(request):
         except:
             receiver = None
 
+
         if receiver != None:
 
             was_already_created_chat = True
@@ -216,7 +217,7 @@ def create_chat_room_view(request):
             except:
                 was_already_created_chat = False
 
-            print(str(was_already_created_chat) * 200)
+        
             if was_already_created_chat == True:
                 return redirect('chat-content', chat_id)
 

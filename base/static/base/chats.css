@@ -10,7 +10,25 @@
     width: 100%;
     height: 100%;
 
-    gap: 1rem;
+    gap: 2rem;
+}
+
+
+.create-chat
+{
+    padding: 1rem;
+    border: 1px black solid;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+
+    transition: padding 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.create-chat:hover
+{
+    padding: 1.2rem;
+    background-color: black;
+    color: white;
 }
 
 .chat
