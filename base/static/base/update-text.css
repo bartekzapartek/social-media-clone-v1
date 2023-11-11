@@ -1,0 +1,52 @@
+.update-post-section
+{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+}
+
+
+.update-description
+{
+
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+
+    width: 50%;
+    height: 50%;
+
+    border-radius: 1rem;
+    background-color: rgb(182, 172, 186);
+
+}
+
+.update-description > form > input
+{
+
+    padding: 3rem;
+    background-color: black;
+
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    color: white;
+
+    transition: padding 0.5s, background-color 0.5s, color 0.5s;
+
+}
+
+.update-description > form > input:hover
+{
+
+    color: black;
+    background-color: white;
+    padding: 3.2rem;
+
+}

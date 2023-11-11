@@ -9,18 +9,27 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
 
+def get_recent_activity_messages(user):
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = user) | Q(participant_2 = user))
+    recent_activity_messages = None
+
+    for chat in recent_activity_chats:
+        recent_activity_messages
+
+    
+
 
 @login_required(login_url = 'login')
 def home_view(request):
     logged_user = UserProfile.objects.get(user = request.user)
     following_users = logged_user.following.all()
     following_posts = []
-    post_comments = []
+
 
     for user in following_users:
         following_posts += Post.objects.filter(owner = user) 
         
-
+   
     
     context = {'following_posts' : following_posts} 
     return render(request, 'base/home.html', context)
@@ -212,7 +221,12 @@ def create_chat_room_view(request):
             was_already_created_chat = True
 
             try:
-                chat_id = Chat.objects.get(Q(participant_1 = receiver) | Q(participant_2 = receiver)).id
+                chat_id = Chat.objects.get(
+
+                    (Q(participant_1 = receiver) & Q(participant_2 = request.user)) |
+                    (Q(participant_1 = request.user) & Q(participant_2 = receiver))
+                    
+                    ).id
 
             except:
                 was_already_created_chat = False
@@ -256,6 +270,9 @@ def show_chat_content(request, pk):
     chat_room = Chat.objects.get(id = pk)
     chat_content = chat_room.message_set.all()
 
+    if request.user != chat_room.participant_1 and request.user != chat_room.participant_2:
+        return redirect('show-chats')
+
     if request.method == 'POST':
         
         message_content = request.POST.get('message')
@@ -275,6 +292,59 @@ def show_chat_content(request, pk):
         message.save()
 
         return redirect('chat-content', pk)
-
-    context = {'messages' : chat_content}
+    
+    message_page = True
+    context = {'messages' : chat_content, 'message_page' : True}
     return render(request, 'base/chat.html', context)
+
+
+@login_required(login_url = 'login')
+def update_post_view(request, pk):
+    post = Post.objects.get(id = pk)
+    
+    if request.method == "POST" and request.user == post.owner:
+        description = request.POST.get('text')
+
+        post.description = description
+
+        post.save()
+
+        return redirect('post', pk)
+
+
+    context = {}
+    return render(request, 'base/update-text.html', context)
+
+@login_required(login_url = 'login')
+def update_comment_view(request, pk):
+    comment = Comment.objects.get(id = pk)
+    post = Post.objects.get(comment = comment)
+
+    if request.method == "POST" and request.user == comment.owner:
+        content = request.POST.get('text')
+
+        comment.body = content
+
+        comment.save()
+
+        return redirect('post', post.id)
+    
+    context = {}
+    return render(request, 'base/update-text.html', context)
+
+
+@login_required(login_url = "login")
+def update_message_view(request, pk):
+    message = Message.objects.get(id = pk)
+
+    if request.method == "POST" and request.user == message.owner:
+        content = request.POST.get('text')
+
+        message.body = content
+
+        message.save()
+
+        return redirect('chat-content', message.chat.id)
+    
+    context = {}
+    return render(request, 'base/update-text.html', context)

@@ -17,6 +17,25 @@
 
             </div>
 
+            {% if request.user == comment.owner and message_page != True %}
+                <a href="{% url 'update-comment' comment.id %}" class = "post-comment-date">
+
+                    update
+
+                </a>
+
+            {% elif request.user == comment.owner and message_page == True %}
+            
+                <a href="{% url 'update-message' comment.id %}" class = "post-comment-date">
+
+                    update
+
+                </a>
+
+            {% endif %}
+
+
+
 
             <div class="post-comment-content">
 

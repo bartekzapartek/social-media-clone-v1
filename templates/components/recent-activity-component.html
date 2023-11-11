@@ -1,0 +1,24 @@
+
+<div class="recent-activity-wrapper">
+
+    {% if errors %}
+
+    {% else %}
+
+        <div class="recent-activity-messages">
+
+            {% for message in recent_activity_messages %}
+
+              <a href="{% url 'chat-content' message.chat.id %}">
+
+                    <p>@{{ message.owner.username }}</p>
+                    <p>{{ message.body | slice:":50" }}</p>
+              </a>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+</div>
