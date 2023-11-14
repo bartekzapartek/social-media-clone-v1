@@ -9,29 +9,23 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
 
-def get_recent_activity_messages(user):
-    recent_activity_chats = Chat.objects.filter(Q(participant_1 = user) | Q(participant_2 = user))
-    recent_activity_messages = None
 
-    for chat in recent_activity_chats:
-        recent_activity_messages
-
-    
-
+   
 
 @login_required(login_url = 'login')
 def home_view(request):
     logged_user = UserProfile.objects.get(user = request.user)
     following_users = logged_user.following.all()
     following_posts = []
-
+    
 
     for user in following_users:
         following_posts += Post.objects.filter(owner = user) 
-        
-   
+
+
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = request.user) | Q(participant_2 = request.user))[:3]
     
-    context = {'following_posts' : following_posts} 
+    context = {'following_posts' : following_posts, 'recent_activity_chats' : recent_activity_chats} 
     return render(request, 'base/home.html', context)
 
 
@@ -54,13 +48,17 @@ def search_view(request):
         else:
             pass
 
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = request.user) | Q(participant_2 = request.user))[:3]
+
+    context['recent_activity_chats'] = recent_activity_chats
     return render(request, 'base/search.html', context)
 
 def explore_view(request):
     posts = Post.objects.all().order_by('-created')
 
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = request.user) | Q(participant_2 = request.user))[:3]
 
-    context = {'posts' : posts}
+    context = {'posts' : posts, 'recent_activity_chats' : recent_activity_chats}
     return render(request, 'base/explore.html', context)
 
 def post_view(request, pk):
@@ -85,8 +83,9 @@ def post_view(request, pk):
 
         return redirect('post', pk)
 
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = request.user) | Q(participant_2 = request.user))[:3]
     
-    context = {'post' : post, 'likes_count' : likes_count, 'comments' : comments}   
+    context = {'post' : post, 'likes_count' : likes_count, 'comments' : comments, 'recent_activity_chats' : recent_activity_chats }   
     return render(request, 'base/post-view.html', context)
 
 @login_required(login_url = 'login')
@@ -126,15 +125,19 @@ def user_profile_view(request, username):
 
         return redirect('user-profile', user.username)
 
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = request.user) | Q(participant_2 = request.user))[:3]
+
     context = {
 
         'username' : username,
         'following_count' : following_count,
         'followers_count' : followers_count,
         'posts' : posts,
-        'follow_status' : follow_status
+        'follow_status' : follow_status,
+        'recent_activity_chats' : recent_activity_chats
 
     }
+
 
     return render(request, 'base/user-profile.html', context)
 
@@ -146,7 +149,9 @@ def followers_view(request, username):
 
     followers = user_profile.followers.all()
 
-    context = {'users' : followers}
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = request.user) | Q(participant_2 = request.user))[:3]
+
+    context = {'users' : followers, 'recent_activity_chats' : recent_activity_chats}
 
     return render(request, 'base/show-followers.html', context)
 
@@ -158,7 +163,9 @@ def following_view(request, username):
 
     following = user_profile.following.all()
 
-    context = {'users' : following}
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = request.user) | Q(participant_2 = request.user))[:3]
+
+    context = {'users' : following, 'recent_activity_chats' : recent_activity_chats}
 
     return render(request, 'base/show-followers.html', context)
 
@@ -179,8 +186,8 @@ def create_view(request):
 
             return redirect('user-profile', post.owner.username)
 
-
-    context = {'post_form' : post_form}
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = request.user) | Q(participant_2 = request.user))[:3]
+    context = {'post_form' : post_form, 'recent_activity_chats' : recent_activity_chats}
     return render(request, 'base/create.html', context)
 
 
@@ -195,7 +202,8 @@ def delete_post_view(request, pk):
         post.delete()
         return redirect('user-profile', post.owner.username)
 
-    context = {}
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = request.user) | Q(participant_2 = request.user))[:3]
+    context = {'recent_activity_chats' : recent_activity_chats}
     return render(request, 'base/delete-post.html', context)
 
 
@@ -248,7 +256,8 @@ def create_chat_room_view(request):
         
         return redirect('create-chat')
 
-    context = {'following' : logged_user_following}
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = request.user) | Q(participant_2 = request.user))[:3]
+    context = {'following' : logged_user_following, 'recent_activity_chats' : recent_activity_chats}
     return render(request, 'base/create-chat.html', context)
 
 
@@ -261,7 +270,8 @@ def show_chats_view(request):
 
     )
 
-    context = {'chats' : user_chats}
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = request.user) | Q(participant_2 = request.user))[:3]
+    context = {'chats' : user_chats, 'recent_activity_chats' : recent_activity_chats}
     return render(request, 'base/chats.html', context)
 
 
@@ -293,8 +303,11 @@ def show_chat_content(request, pk):
 
         return redirect('chat-content', pk)
     
-    message_page = True
-    context = {'messages' : chat_content, 'message_page' : True}
+    participant = chat_room.participant_1 if chat_room.participant_1 != request.user else chat_room.participant_2
+
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = request.user) | Q(participant_2 = request.user))[:3]
+
+    context = {'messages' : chat_content, 'participant' : participant, 'message_page' : True, 'recent_activity_chats' : recent_activity_chats}
     return render(request, 'base/chat.html', context)
 
 
@@ -311,8 +324,9 @@ def update_post_view(request, pk):
 
         return redirect('post', pk)
 
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = request.user) | Q(participant_2 = request.user))[:3]
 
-    context = {}
+    context = {'recent_activity_chats' : recent_activity_chats}
     return render(request, 'base/update-text.html', context)
 
 @login_required(login_url = 'login')
@@ -329,22 +343,29 @@ def update_comment_view(request, pk):
 
         return redirect('post', post.id)
     
-    context = {}
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = request.user) | Q(participant_2 = request.user))[:3]
+    
+    context = {'recent_activity_chats' : recent_activity_chats}
     return render(request, 'base/update-text.html', context)
 
 
 @login_required(login_url = "login")
 def update_message_view(request, pk):
     message = Message.objects.get(id = pk)
+    chat = message.chat
 
     if request.method == "POST" and request.user == message.owner:
         content = request.POST.get('text')
 
         message.body = content
+        chat.recent_message = content
+        chat.recent_message_owner = request.user.username
 
         message.save()
+        chat.save()
 
         return redirect('chat-content', message.chat.id)
     
-    context = {}
+    recent_activity_chats = Chat.objects.filter(Q(participant_1 = request.user) | Q(participant_2 = request.user))[:3]
+    context = {'recent_activity_chats' : recent_activity_chats}
     return render(request, 'base/update-text.html', context)

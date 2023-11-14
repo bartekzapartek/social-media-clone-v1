@@ -1,7 +1,7 @@
 .recent-activity-wrapper
 {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
 
     width: 90%;
     height: 90%;
@@ -10,16 +10,36 @@
 
 .recent-activity-messages
 {
+    display: flex;
+    flex-direction: column;
+
+    width: 80%;
     
 }
 
 
 .recent-activity-messages > a
 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
+    width: 100%;
+    height: 33%;
+
+    gap: 0.5rem;
 }
 
 .recent-activity-messages > a > p
 {
+    font-size: 1.2rem;
+}
 
+.recent-activity-messages > a > span
+{
+
+        color: white;
+        font-weight: 700;
+        font-size: 1.2rem;
 }

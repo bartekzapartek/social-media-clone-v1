@@ -7,12 +7,12 @@
 
         <div class="recent-activity-messages">
 
-            {% for message in recent_activity_messages %}
+            {% for chat in recent_activity_chats %}
 
-              <a href="{% url 'chat-content' message.chat.id %}">
+              <a href="{% url 'chat-content' chat.id %}">
 
-                    <p>@{{ message.owner.username }}</p>
-                    <p>{{ message.body | slice:":50" }}</p>
+                    <span>@{{ chat.recent_message_owner }}</span>
+                    <p>{{ chat.recent_message | slice:":10" }}</p>
               </a>
 
             {% endfor %}

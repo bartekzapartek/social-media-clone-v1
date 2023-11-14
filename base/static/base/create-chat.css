@@ -65,6 +65,12 @@
 .create-by-following > form > input
 {
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
     padding: 2rem;
     border-radius: 1rem;
     font-size: 1.3rem;
