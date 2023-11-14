@@ -8,6 +8,8 @@ from .forms import UserRegisterForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
+from django.contrib import messages as login_errors
+
 
 
 def login_view(request):
@@ -29,10 +31,11 @@ def login_view(request):
             login(request, user)
             return redirect('home')
         
+        login_errors.error(request, "Username or password does not match. Try again")
         return redirect('login')
 
 
-    context = {'login_page' : login_page}
+    context = {'login_page' : login_page, 'errors' : login_errors}
     return render(request, 'authen/authenticate.html', context)
 
 
@@ -46,12 +49,18 @@ def register_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password1')
+        confirm_password = request.POST.get('password2')
+
+        if confirm_password != password:
+            login_errors.error(request, "Password confirmation does not match. Try again")
+            return redirect('register')   
 
         user_creation_form = UserCreationForm(request.POST)
 
         username_taken = True if User.objects.filter(username = username).count() == 1 else False
 
         if username_taken:
+            login_errors.error(request, "Username is taken. Try again")
             return redirect('register')
         
         if user_creation_form.is_valid():
@@ -62,11 +71,15 @@ def register_view(request):
             user = authenticate(request, username = username, password = password)
             if user is not None:
                 login(request, user)
-                print('-' * 1000)
+                return redirect('home')
 
-        return redirect('home')
+
+        login_errors.error(request, "Password is not strong enough. Try again")
+        return redirect('register')   
+            
+            
         
-    context = {'user_creation_form' : user_creation_form, 'login_page' : login_page}
+    context = {'user_creation_form' : user_creation_form, 'login_page' : login_page, 'errors' : login_errors}
     return render(request, 'authen/authenticate.html', context)
 
 

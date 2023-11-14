@@ -3,6 +3,17 @@
 
     {% if errors %}
 
+    <div class="recent-activity-messages">
+
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+     
+
     {% else %}
 
         <div class="recent-activity-messages">
@@ -12,7 +23,7 @@
               <a href="{% url 'chat-content' chat.id %}">
 
                     <span>@{{ chat.recent_message_owner }}</span>
-                    <p>{{ chat.recent_message | slice:":10" }}</p>
+                    <p>{{ chat.recent_message | slice:":20" }}</p>
               </a>
 
             {% endfor %}
