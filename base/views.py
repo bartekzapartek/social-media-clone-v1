@@ -7,6 +7,7 @@ from .forms import PostForm
 from django.db.models import Q
 
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages as search_errors
 
 
 def get_recent_activity_chats(request):
@@ -51,8 +52,8 @@ def search_view(request):
             context = {'search_result' : search_result, 'result_type' : 'posts'}
 
         else:
-            pass
-
+            search_errors.error(request, "Use have to use @ or #.")
+            context['errors'] = search_errors
 
 
     context['recent_activity_chats'] = get_recent_activity_chats(request)
